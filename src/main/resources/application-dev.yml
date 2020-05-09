@@ -1,0 +1,50 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/notemi-demo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    password: 123456
+    username: root
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      connection-timeout: 30000
+      maximum-pool-size: 20
+      max-lifetime: 1800000
+      minimum-idle: 5
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 20
+        generate_statistics: false
+        enable_lazy_load_no_trans: true
+    show-sql: true
+    open-in-view: false
+  redis:
+    host: localhost
+    password: myredis
+    port: 6379
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+  main:
+    allow-bean-definition-overriding: true
+  messages:
+    encoding: UTF-8
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${user.dir}/static/
+  servlet:
+    multipart:
+      enabled: false
+      max-file-size: 200MB
+      max-request-size: 200MB
+  session:
+    store-type: none
