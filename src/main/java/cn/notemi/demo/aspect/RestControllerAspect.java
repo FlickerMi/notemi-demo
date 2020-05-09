@@ -62,7 +62,6 @@ public class RestControllerAspect {
 		String methodName = this.getMethodName(joinPoint);
 		String params = this.getParamsJson(joinPoint);
 		String requester = loginUser == null ? "unknown" : String.valueOf(loginUser.getId());
-//		String requester =  "unknown";
 
 		String callSource = request.getHeader(HeaderConstants.CALL_SOURCE);
 		String appVersion = request.getHeader(HeaderConstants.APP_VERSION);
@@ -115,6 +114,7 @@ public class RestControllerAspect {
      * 判断是否需要记录日志
      */
 	private boolean needToLog(Method method) {
+		// 对 `@GetMapping` 注解注释的方法和 `GlobalExceptionHandler` 这个类下的所有方法都不需要打印日志
 //		return method.getAnnotation(GetMapping.class) == null
 //				&& !method.getDeclaringClass().equals(GlobalExceptionHandler.class);
 		return !method.getDeclaringClass().equals(GlobalExceptionHandler.class);

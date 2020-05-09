@@ -18,6 +18,7 @@ import java.lang.reflect.Method;
 @Slf4j
 public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {
 
+	//根据方法参数判断是否需要对其做转换
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
 		final Method method = parameter.getMethod();
@@ -29,6 +30,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
 		return isHasLoginAuthAnn && isHasLoginUserParameter;
 	}
 
+	//supportsParameter方法返回true后，进入该方法，返回值即为要转化对象的结果
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		return LoginTokenHelper.getLoginUserFromRequest();

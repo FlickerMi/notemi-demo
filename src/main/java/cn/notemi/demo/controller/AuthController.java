@@ -19,10 +19,6 @@ import java.util.UUID;
 
 /**
  * Title：AuthController
- * Description：
- *
- * @author Flicker
- * @create 2020-05-04 15:08
  **/
 @RestController
 @RequestMapping("/api/auth")
@@ -53,6 +49,4 @@ public class AuthController {
     public void logout() {
         loginService.logout();
     }
-
-
 }

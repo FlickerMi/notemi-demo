@@ -19,10 +19,6 @@ import java.util.UUID;
 
 /**
  * Title：UserController
- * Description：
- *
- * @author Flicker
- * @create 2020-05-04 15:08
  **/
 @RestController
 @RequestMapping("/api/user")
@@ -53,7 +49,6 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @LoginAuth
     public User findOneById(@PathVariable("id") String id) {
         return userRepository.findById(id).orElse(null);
     }
